@@ -1,5 +1,5 @@
+import { IoMdLogOut } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
-
 import logo from "../../../assets/icons/Doctor-logo.png";
 
 const Navbar = () => {
@@ -57,7 +57,7 @@ const Navbar = () => {
   ;
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-100 mb-4">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -84,7 +84,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className=" text-2xl font-bold">
-          <img src={logo} alt="Logo" className="w-32 h-20" />
+          <img src={logo} alt="Logo" className="w-24 h-14" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -102,13 +102,13 @@ const Navbar = () => {
        
           <button
           
-            className="btn btn-sm btn-secondary px-4"
+            className="btn btn-sm btn-primary bg-gradient-to-r from-primary to-secondary px-4"
           >
-            Sign Out
+          <IoMdLogOut className="text-2xl text-white" />
           </button>
        
           <Link to="/login">
-            <button className="btn btn-sm btn-primary px-4">Login Here!</button>
+            <button className="btn btn-sm btn-secondary bg-gradient-to-r from-primary to-secondary px-4 text-white">Login Here!</button>
           </Link>
      
       </div>
