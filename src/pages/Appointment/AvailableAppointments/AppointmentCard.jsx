@@ -11,7 +11,8 @@ const AppointmentCard = ({ option, setTreatment }) => {
         <div className="card-actions " onClick={()=>document.getElementById('my_modal_3').showModal()}>
           <button 
           disabled={slots.length === 0}
-          className="btn btn-primary" onClick={()=> setTreatment(option,)}>Book Appointment</button>
+          className="btn btn-primary"
+         onClick={()=> setTreatment(option)}>Book Appointment</button>
         </div>
       </div>
     </div>
