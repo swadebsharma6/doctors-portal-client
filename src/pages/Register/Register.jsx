@@ -1,23 +1,23 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import SocialLogin from "./SocialLogin";
+import SocialLogin from "../Login/SocialLogin";
 
 
+const Register = () => {
 
-const Login = () => {
-    
-    const { register, handleSubmit } = useForm();
+    const { register,  handleSubmit, formState: { errors }, } = useForm();
     
   
       
-    const handleLogin = (data) =>{
+    const handleRegister = (data) =>{
         console.log(data)
     }
+
     return (
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl font-bold">Login now!</h1>
+            <h1 className="text-4xl font-bold">Register now!</h1>
             <p className="py-6">
               Provident cupidity voluptatem et in. Quadrat fugit ut assumed except
               exercitation quasi. In delegati ease aut repudiate et a id nisi.
@@ -26,19 +26,31 @@ const Login = () => {
           <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form
               className="card-body"
-              onSubmit={handleSubmit(handleLogin)}
+              onSubmit={handleSubmit(handleRegister)}
             >
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("name" ,{required: "Name is Required"})}
+                  placeholder="name"
+                  className="input input-bordered w-full"
+                />
+                {errors.name && <p className="text-lg text-red-500">{errors.name.message}</p>}
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="email"
-                  {...register("email")}
+                  {...register("email",{required: "Email is Required"})}
                   placeholder="email"
                   className="input input-bordered w-full"
-                  required
                 />
+                {errors.email && <p className="text-lg text-red-500">{errors.email.message}</p>}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -46,26 +58,25 @@ const Login = () => {
                 </label>
                 <input
                   type="password"
-                  {...register("password")}
+                  {...register("password",{
+                    required: "Password is Required",
+                    minLength: {value: 6, message: 'Password must be 6 character.'},
+                  })}
                   placeholder="password"
                   className="input input-bordered w-full"
-                  required
+                  
                 />
-                <label className="label">
-                  <p  className="label-text-alt link link-hover">
-                    Forgot password?
-                  </p>
-                </label>
+                {errors.password &&  <p className="text-lg text-red-500">{errors.password.message}</p>}
               </div>
               <div className="form-control mt-6">
                 <button type="submit" className="btn btn-primary">
-                  Login
+                  Register
                 </button>
               </div>
               <p className="text-xs font-bold text-center">
-                New to Doctors Portal?{" "}
-                <Link to="/register" className="text-secondary">
-                  Create new account
+                Already Have an Account?{" "}
+                <Link to="/login" className="text-secondary">
+                  Login on account
                 </Link>
               </p>
             </form>
@@ -76,6 +87,4 @@ const Login = () => {
     );
 };
 
-export default Login;
-
-// {logErr && <p className=" text-red-500 text-center">{logErr}</p>}
+export default Register;

@@ -13,13 +13,13 @@ const ContactUs = () => {
         <div>
         <form className="card-body">
         <div className="form-control">
-          <input type="email" placeholder="email" className="input input-bordered w-full" required />
+          <input type="email" placeholder="email" className="input input-bordered w-full text-black" required />
         </div>
         <div className="form-control">
-          <input type="text" placeholder="Subject" className="input input-bordered" required />
+          <input type="text" placeholder="Subject" className="input input-bordered text-black" required />
         </div>
         <div className="form-control">
-        <textarea className="textarea textarea-bordered h-32" placeholder="Bio"></textarea>
+        <textarea className="textarea textarea-bordered text-black h-32" placeholder="Bio"></textarea>
         </div>
         <div className="mt-6 text-center">
           <button className="btn btn-primary bg-gradient-to-r from-primary to-secondary">Submit</button>
