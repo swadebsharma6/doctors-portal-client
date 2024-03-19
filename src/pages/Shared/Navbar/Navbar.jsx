@@ -1,15 +1,19 @@
+import { useContext } from "react";
+import toast from "react-hot-toast";
 import { IoMdLogOut } from "react-icons/io";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthProvider";
 import logo from "../../../assets/icons/Doctor-logo.png";
 
 const Navbar = () => {
-//   const { user, logOutUser } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
 
-//   const handleLogOut = () => {
-//     logOutUser().then(() => {
-//       alert("User logout Successfully");
-//     });
-//   };
+  const handleLogOut = () => {
+    logOutUser().then(() => {
+      toast.success('LogOut Successfully!')
+
+    });
+  };
 
   const navMenu = 
     <>
@@ -45,14 +49,14 @@ const Navbar = () => {
           Reviews
         </NavLink>
       </li>
-      <li>
+  {user &&    <li>
       <NavLink
         to="/dashboard"
         className={({ isActive }) => (isActive ? "active" : "")}
       >
         DashBoard
       </NavLink>
-    </li>
+    </li>}
     </>
   ;
 
@@ -100,16 +104,16 @@ const Navbar = () => {
           </div>
         </div>
        
-          <button
-          
+         { user ? <button
+            onClick={handleLogOut}
             className="btn btn-sm btn-primary bg-gradient-to-r from-primary to-secondary px-4"
           >
           <IoMdLogOut className="text-2xl text-white" />
           </button>
-       
+       :
           <Link to="/login">
             <button className="btn btn-sm btn-secondary bg-gradient-to-r from-primary to-secondary px-4 text-white">Login Here!</button>
-          </Link>
+          </Link>}
      
       </div>
     </div>

@@ -1,16 +1,41 @@
+import { updateProfile } from "firebase/auth";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Context/AuthProvider";
 import SocialLogin from "../Login/SocialLogin";
 
 
 const Register = () => {
-
+    const {createUser} = useContext(AuthContext);
+    const [logErr, setLogErr] = useState('');
     const { register,  handleSubmit, formState: { errors }, } = useForm();
     
   
       
     const handleRegister = (data) =>{
-        console.log(data)
+
+        setLogErr('');
+        console.log(data);
+        // create user
+        createUser(data.email, data.password)
+        .then(result =>{
+            const user = result.user;
+            console.log('create user', user);
+            updateProfile(user, {
+                displayName:data.name
+            })
+            .then(()=>{
+                toast.success('User Register Successfully !')
+            })
+            .catch(error => {
+               setLogErr(error.message)
+            })
+        })
+        .catch(error => {
+            setLogErr(error.message)
+         })
     }
 
     return (
@@ -80,6 +105,7 @@ const Register = () => {
                 </Link>
               </p>
             </form>
+            {logErr && <p className=" text-red-500 text-center">{logErr}</p>}
            <SocialLogin/>
           </div>
         </div>

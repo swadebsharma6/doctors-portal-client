@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
+import DashBoard from "../DashBoard/DashBoard/DashBoard";
 import Main from "../Layout/Main";
 import About from "../pages/About/About";
 import Appointment from "../pages/Appointment/Appointment";
 import Home from "../pages/Home/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Register/Register";
+import PrivetRoutes from "./PrivetRoutes";
 
 export const router = createBrowserRouter([
     {
@@ -33,4 +35,8 @@ export const router = createBrowserRouter([
         }
       ]
     },
+    {
+      path: '/dashboard',
+      element: <PrivetRoutes><DashBoard/></PrivetRoutes>
+    }
   ]);
