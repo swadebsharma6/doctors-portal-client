@@ -44,7 +44,7 @@ const BookingModal = ({treatment,setTreatment, selectedDate, refetch}) => {
             refetch();
           }
           else{
-            toast.error(data.message)
+            toast.error(data.message);
           }
          
         })
