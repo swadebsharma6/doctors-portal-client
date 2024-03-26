@@ -25,7 +25,7 @@ const BookingModal = ({treatment,setTreatment, selectedDate, refetch}) => {
             slot,
             phone
         };
-        console.log(booking);
+        // console.log(booking);
 
         setTreatment(null);
 

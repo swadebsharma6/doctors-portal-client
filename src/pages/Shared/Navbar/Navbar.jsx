@@ -95,6 +95,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 font-semibold">{navMenu}</ul>
       </div>
       <div className="navbar-end">
+      {user && <p className="text-xl font-bold text-secondary">{user.displayName}</p>}
         <div className="btn btn-ghost btn-circle avatar ml-10 mr-3">
           <div className="w-10 rounded-full">
             <img
@@ -114,6 +115,23 @@ const Navbar = () => {
           <Link to="/login">
             <button className="btn btn-sm btn-secondary bg-gradient-to-r from-primary to-secondary px-4 text-white">Login Here!</button>
           </Link>}
+
+          <label htmlFor="my-drawer-2" tabIndex={2} role="button" className="btn btn-ghost lg:hidden">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </label>
      
       </div>
     </div>
